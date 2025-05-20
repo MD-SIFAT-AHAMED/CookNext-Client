@@ -3,9 +3,11 @@ import logo from "../assets/logo.jpg";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Link } from "react-router";
 const Footer = () => {
+
   return (
-    <footer className="footer footer-horizontal footer-center   p-10">
+    <footer className="footer footer-horizontal footer-center p-10">
       <aside>
+       
         <figure>
           <img className="w-20 md:w-25" src={logo} alt="logo" />
         </figure>
