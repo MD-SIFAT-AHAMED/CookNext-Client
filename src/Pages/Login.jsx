@@ -1,38 +1,44 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import loginImg from "../assets/vagitable2.jpg";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import AuthContext from "../Context/AuthContext";
 import toast from "react-hot-toast";
+import { IoEyeOutline } from "react-icons/io5";
+import { FaRegEyeSlash } from "react-icons/fa";
 const Login = () => {
-  const {userLoginWithEmail,userLoginWithGoogle} = use(AuthContext);
+  const { userLoginWithEmail, userLoginWithGoogle } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [showPassword, setShowPassword] = useState(true);
 
-  const handlerUserSignIn=(e)=>{
+  const handlerUserSignIn = (e) => {
     e.preventDefault();
-    const form =e.target;
+    const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    userLoginWithEmail(email,password)
-    .then((data)=>{
-       toast.success("Login Successfully");
-      console.log(data);
-    })
-    .catch(err=>{
-       toast.error(err.code);
-    })
-  }
-  const hanlderUserLogin=()=>{
+    userLoginWithEmail(email, password)
+      .then((data) => {
+        toast.success("Login Successfully");
+        navigate(location?.state || "/");
+        console.log(data);
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
+  };
+  const hanlderUserLogin = () => {
     userLoginWithGoogle()
-    .then((data)=>{
-      toast.success("Login Successfully");
-      console.log(data)
-    })
-    .catch((err)=>{
-      toast.error(err.code);
-    })
-  }
-
+      .then((data) => {
+        toast.success("Login Successfully");
+        navigate(location?.state || "/");
+        console.log(data);
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
+  };
 
   return (
     <div
@@ -52,15 +58,21 @@ const Login = () => {
               required
             />
           </fieldset>
-          <fieldset>
+          <fieldset className="relative">
             <legend className="text-sm md:text-base">Password</legend>
             <input
-              type="text"
+              type={showPassword ? "password" : "text"}
               className="input w-[350px] border-none focus:outline-none"
               name="password"
               placeholder="password"
               required
             />
+            <div
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute top-[13px] z-1 right-5"
+            >
+              {showPassword ? <IoEyeOutline /> : <FaRegEyeSlash />}
+            </div>
           </fieldset>
           <fieldset>
             <input
@@ -69,8 +81,21 @@ const Login = () => {
               className="btn w-[350px] rounded-xl text-white bg-[#534e48] hover:border-[#c88489]"
             />
           </fieldset>
-          <p className="text-center">You don't have an account? <Link to={'/register'}><span className="underline">Register</span></Link><br />or</p>
-          <button onClick={hanlderUserLogin} className="bg-white/80 px-3 py-2 rounded-2xl flex items-center gap-2 font-bold cursor-pointer"><FcGoogle size={25} />Login with Google</button>
+          <p className="text-center">
+            You don't have an account?{" "}
+            <Link to={"/register"}>
+              <span className="underline">Register</span>
+            </Link>
+            <br />
+            or
+          </p>
+          <button
+            onClick={hanlderUserLogin}
+            className="bg-white/80 px-3 py-2 rounded-2xl flex items-center gap-2 font-bold cursor-pointer"
+          >
+            <FcGoogle size={25} />
+            Login with Google
+          </button>
         </div>
       </form>
     </div>

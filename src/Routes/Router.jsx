@@ -7,6 +7,7 @@ import AddRecipe from "../Pages/AddRecipe";
 import MyRecipe from "../Pages/MyRecipe";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -24,11 +25,15 @@ const router = createBrowserRouter([
             },
             {
                 path:'/addRecipe',
-                Component:AddRecipe
+                element:<PrivateRoute>
+                    <AddRecipe/>
+                </PrivateRoute>
             },
             {
                 path:'/myRecipe',
-                Component:MyRecipe
+                element:<PrivateRoute>
+                    <MyRecipe/>
+                </PrivateRoute>
             },
             {
                 path:'/register',

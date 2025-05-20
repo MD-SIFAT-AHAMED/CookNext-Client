@@ -1,19 +1,32 @@
-import React from "react";
+import React, { use } from "react";
 import logo from "../assets/logo.jpg";
 import { Link } from "react-router";
+import AuthContext from "../Context/AuthContext";
+import toast from "react-hot-toast";
 const Navbar = () => {
+  const { user, userSignOut } = use(AuthContext);
+
+  const handlerSignOut = () => {
+    userSignOut()
+    .then(()=>{
+      toast.success("SignOut Successfully");
+    })
+    .catch((err)=>{
+      toast.error(err.code);
+    })
+  };
   const links = (
     <>
-      <Link to={'/'}>
+      <Link to={"/"}>
         <li>Home</li>
       </Link>
-      <Link to={'/allRecipe'}>
+      <Link to={"/allRecipe"}>
         <li>All Recipes</li>
       </Link>
-      <Link to={'/addRecipe'}>
+      <Link to={"/addRecipe"}>
         <li>Add Recipe</li>
       </Link>
-      <Link to={'/myRecipe'}>
+      <Link to={"/myRecipe"}>
         <li>My Recipe</li>
       </Link>
     </>
@@ -43,31 +56,75 @@ const Navbar = () => {
             tabIndex={0}
             className=" space-y-2 menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 "
           >
-            {
-                links
-            }
+            {links}
           </ul>
         </div>
         <figure>
-            <img className="w-15 md:w-20" src={logo} alt="Logo" />
+          <img className="w-15 md:w-20" src={logo} alt="Logo" />
         </figure>
-        <Link to={'/'} className="text-xl md:text-2xl font-semibold">Cook<span className="text-orange-500">Nest</span></Link>
+        <Link to={"/"} className="text-xl md:text-2xl font-semibold">
+          Cook<span className="text-orange-500">Nest</span>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="md:text-lg  space-x-4 menu menu-horizontal px-1 *:hover:text-orange-600">
-          {
-            links
-          }
+          {links}
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="md:text-lg font-semibold space-x-1">
-            <Link to={'/register'} className="bg-linear-to-l from-[#f9942a] to-[#e14752] hover:from-[#e14752] text-white px-3 py-2 rounded-lg">Register</Link>
-            <Link to={'/login'} className="border text-[#f9942a] border-[#f9942a] hover:bg-[#f9942a] hover:text-white px-3 py-2 rounded-lg">Login</Link>
-        </div>
-        <div>
-            {/* prfile */}
-        </div>
+        {!user && (
+          <div className="md:text-lg font-semibold space-x-1">
+            <Link
+              to={"/register"}
+              className="bg-linear-to-l from-[#f9942a] to-[#e14752] hover:from-[#e14752] text-white px-3 py-2 rounded-lg"
+            >
+              Register
+            </Link>
+            <Link
+              to={"/login"}
+              className="border text-[#f9942a] border-[#f9942a] hover:bg-[#f9942a] hover:text-white px-3 py-2 rounded-lg"
+            >
+              Login
+            </Link>
+          </div>
+        )}
+        {user && (
+          <div>
+            <div className="dropdown dropdown-bottom dropdown-end">
+              <div tabIndex={0} role="button" className="m-1">
+                <div className="avatar w-10 h-10 avatar-online">
+                  <img
+                src={user.photoURL}
+                referrerPolicy="no-referrer"
+                alt="Profile"
+                className="mx-auto ring-2 ring-orange-400 rounded-full object-cover"
+              />
+                </div>
+              </div>
+              <div
+                tabIndex={0}
+                className="dropdown-content menu z-20 bg-white shadow-xl border border-gray-200 rounded-2xl w-64 p-5 space-y-5 relative"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 via-yellow-400 to-green-400 rounded-t-2xl"></div>
+
+                {/* User Info */}
+                <div className="text-center space-y-1">
+              <p className="text-md font-semibold text-gray-800">
+                {user.displayName}
+              </p>
+            </div>
+
+                {/* Sign Out Button */}
+                <button
+                  onClick={handlerSignOut}
+                  className="w-full py-2 px-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white text-sm font-semibold rounded-lg shadow-md transition-all duration-200"
+                >
+                  Sign Out
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
