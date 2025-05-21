@@ -12,7 +12,7 @@ const RecipeCard = ({ recipe }) => {
         />
       </figure>
       <div className="card-body bg-gray-100">
-        <h2 className="card-title">{recipe.title}</h2>
+        <h2 className="card-title font-bold text-xl text-green-800">{recipe.title}</h2>
         <p>
           <strong>Instructions:</strong> {recipe.instructions}
         </p>
