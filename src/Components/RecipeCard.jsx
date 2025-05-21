@@ -27,21 +27,9 @@ const RecipeCard = ({ recipe }) => {
           </span>
         </div>
 
-        <p className="mt-2">
-          <strong>Cuisine:</strong> {recipe.cuisine}
-        </p>
-
-        <div className="flex flex-wrap gap-1 mt-2">
-          {recipe.categories.map((cat, i) => (
-            <div key={i} className="badge badge-outline">
-              {cat}
-            </div>
-          ))}
-        </div>
-
         <div className="card-actions mt-4">
           <Link
-            to={`/recipes/${recipe._id}`}
+            to={`/recipeDetails/${recipe._id}`}
             className="btn w-full font-semibold text-white rounded-2xl bg-green-500/80 hover:bg-white hover:border-green-400 hover:text-black"
           >
             See Details

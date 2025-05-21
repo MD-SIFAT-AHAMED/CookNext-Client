@@ -8,6 +8,7 @@ import MyRecipe from "../Pages/MyRecipe";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import PrivateRoute from "./PrivateRoute";
+import RecipeDetails from "../Pages/RecipeDetails";
 
 const router = createBrowserRouter([
     {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
         children:[
             {
                 index:true,
-                loader:()=> fetch('http://localhost:5000/recipes/by_like'),
+                loader:()=> fetch('http://localhost:5000/recipes/populerRecipe/by_like'),
                 Component:Home
             },
             {
@@ -44,6 +45,13 @@ const router = createBrowserRouter([
             {
                 path:'/login',
                 Component:Login
+            },
+            {
+                path:'/recipeDetails/:id',
+                loader:({params})=>fetch(`http://localhost:5000/recipes/${params.id}`),
+                element:<PrivateRoute>
+                    <RecipeDetails/>
+                </PrivateRoute>
             }
         ]
     }
