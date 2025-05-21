@@ -19,10 +19,10 @@ const Login = () => {
     const password = form.password.value;
 
     userLoginWithEmail(email, password)
-      .then((data) => {
+      .then(() => {
         toast.success("Login Successfully");
         navigate(location?.state || "/");
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
         toast.error(err.code);
@@ -30,10 +30,10 @@ const Login = () => {
   };
   const hanlderUserLogin = () => {
     userLoginWithGoogle()
-      .then((data) => {
+      .then(() => {
         toast.success("Login Successfully");
         navigate(location?.state || "/");
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
         toast.error(err.code);
@@ -71,8 +71,9 @@ const Login = () => {
               onClick={() => setShowPassword((prev) => !prev)}
               className="absolute top-[13px] z-1 right-5"
             >
-              {showPassword ? <IoEyeOutline /> : <FaRegEyeSlash />}
+              {showPassword ? <FaRegEyeSlash /> : <IoEyeOutline />}
             </div>
+            <p className="text-sm hover:underline mt-1">Forgot password?</p>
           </fieldset>
           <fieldset>
             <input

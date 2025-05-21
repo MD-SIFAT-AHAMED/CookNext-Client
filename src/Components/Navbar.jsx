@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.png";
 import { Link } from "react-router";
 import AuthContext from "../Context/AuthContext";
 import toast from "react-hot-toast";

@@ -1,21 +1,19 @@
 import React from "react";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.png";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Link } from "react-router";
 const Footer = () => {
 
   return (
     <footer className="footer footer-horizontal footer-center p-10">
-      <aside>
-       
+      <aside className=" space-y-1">
         <figure>
           <img className="w-20 md:w-25" src={logo} alt="logo" />
         </figure>
-        <p className="font-bold md:text-lg">
-          CookNest
-          <br />
-          Discover delicious, easy-to-make recipes from every kitchen corner.
+        <p className="font-bold text-xl md:text-2xl">
+          Cook<span className="text-orange-500">Nest</span>
         </p>
+        <p className="text-base md:text-lg">Discover delicious, easy-to-make recipes from every kitchen corner.</p>
         <nav className="space-x-2">
           <Link className="link link-hover">About us</Link>
           <Link className="link link-hover">Contact</Link>

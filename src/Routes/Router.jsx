@@ -17,10 +17,12 @@ const router = createBrowserRouter([
         children:[
             {
                 index:true,
+                loader:()=> fetch('http://localhost:5000/recipes/by_like'),
                 Component:Home
             },
             {
                 path:'/allRecipe',
+                loader:()=> fetch('http://localhost:5000/recipes'),
                 Component:AllRecipe
             },
             {

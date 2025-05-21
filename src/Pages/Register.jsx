@@ -18,7 +18,7 @@ const Register = () => {
     const formData = new FormData(form);
     const newUserData = Object.fromEntries(formData.entries());
     const { name, email, password, photo } = newUserData;
-    console.log(email, password);
+    // console.log(email, password);
 
     if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
       toast.error(
@@ -49,9 +49,9 @@ const Register = () => {
 
   const hanlderUserLogin = () => {
     userLoginWithGoogle()
-      .then((data) => {
+      .then(() => {
         toast.success("Login Successfully");
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
         toast.error(err.code);
@@ -109,7 +109,7 @@ const Register = () => {
               onClick={() => setShowPassword((prev) => !prev)}
               className="absolute top-[13px] z-1 right-5"
             >
-              {showPassword ? <IoEyeOutline /> : <FaRegEyeSlash />}
+              {showPassword ? <FaRegEyeSlash /> : <IoEyeOutline />}
             </div>
           </fieldset>
           <fieldset>
