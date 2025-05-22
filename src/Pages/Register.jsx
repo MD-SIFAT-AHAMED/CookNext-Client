@@ -61,10 +61,10 @@ const Register = () => {
   return (
     <div
       style={{ backgroundImage: `url(${registerBg})` }}
-      className="bg-cover min-h-screen flex items-center justify-center"
+      className="bg-cover flex items-center justify-center"
     >
       <form onSubmit={handlerCreateUser}>
-        <div className="space-y-3 py-10 bg-gray-100/80 rounded-2xl p-5 place-items-center">
+        <div className="space-y-3 py-10 my-10 bg-gray-100/80 rounded-2xl p-5 place-items-center">
           <h4 className="text-2xl md:text-4xl font-bold">Register</h4>
           <fieldset>
             <legend className="text-sm md:text-base">Name</legend>

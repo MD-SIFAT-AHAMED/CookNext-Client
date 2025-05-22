@@ -7,7 +7,7 @@ const RecipeDetails = () => {
   const {user} =use(AuthContext);
   const initialRecipe = useLoaderData();
   const [recipe,setRecipe] = useState(initialRecipe);
-  console.log(user);
+  // console.log(user);
 
   const hanlderRecipeLike=()=>{
     if(recipe.userEmail === user.email)
@@ -17,7 +17,7 @@ const RecipeDetails = () => {
     }
     const updateLike = Number(recipe.likes) + Number(1);
 
-    fetch(`http://localhost:5000/recipes/${recipe._id}`,{
+    fetch(`https://recipe-book-server-theta.vercel.app/recipes/${recipe._id}`,{
       method:"PATCH",
       headers:{
         'Content-type':'application/json'

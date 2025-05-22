@@ -92,9 +92,9 @@ const Navbar = () => {
           </ul>
         </div>
         <figure>
-          <img className="w-15 md:w-20" src={logo} alt="Logo" />
+          <img className="w-18 md:w-20" src={logo} alt="Logo" />
         </figure>
-        <Link to={"/"} className="text-xl md:text-2xl font-semibold">
+        <Link to={"/"} className="text-xl hidden md:block md:text-2xl font-semibold">
           Cook<span className="text-orange-500">Nest</span>
         </Link>
       </div>

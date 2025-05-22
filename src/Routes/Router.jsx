@@ -20,13 +20,13 @@ const router = createBrowserRouter([
             {
                 index:true,
                 hydrateFallbackElement:<Spinner/>,
-                loader:()=> fetch('http://localhost:5000/recipes/populerRecipe/by_like'),
+                loader:()=> fetch('https://recipe-book-server-theta.vercel.app/recipes/populerRecipe/by_like'),
                 Component:Home
             },
             {
                 path:'/allRecipe',
                 hydrateFallbackElement:<Spinner/>,
-                loader:()=> fetch('http://localhost:5000/recipes'),
+                loader:()=> fetch('https://recipe-book-server-theta.vercel.app/recipes'),
                 Component:AllRecipe
             },
             {
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             {
                 path:'/recipeDetails/:id',
                 hydrateFallbackElement:<Spinner/>,
-                loader:({params})=>fetch(`http://localhost:5000/recipes/${params.id}`),
+                loader:({params})=>fetch(`https://recipe-book-server-theta.vercel.app/recipes/${params.id}`),
                 element:<PrivateRoute>
                     <RecipeDetails/>
                 </PrivateRoute>

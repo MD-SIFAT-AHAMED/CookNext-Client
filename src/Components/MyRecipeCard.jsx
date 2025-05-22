@@ -13,7 +13,7 @@ const MyRecipeCard = ({ recipe, recipes, setRecipe, handlerDeleteRecipe }) => {
     const updateRecipeData = Object.fromEntries(fromData.entries());
     updateRecipeData.categories = fromData.getAll("categories"),
 
-      fetch(`http://localhost:5000/recipes/${openModal._id}`, {
+      fetch(`https://recipe-book-server-theta.vercel.app/recipes/${openModal._id}`, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
@@ -39,7 +39,7 @@ const MyRecipeCard = ({ recipe, recipes, setRecipe, handlerDeleteRecipe }) => {
 
   const modalOpen = (id) => {
     setOpenModal(id);
-    console.log(id);
+    // console.log(id);
     document.getElementById(`modal_${recipe._id}`).showModal();
   };
 

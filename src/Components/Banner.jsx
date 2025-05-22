@@ -44,7 +44,7 @@ const Banner = () => {
               <img
                 src={book.image}
                 alt={book.title}
-                className="w-full h-90 object-cover"
+                className="w-full h-64 md:h-90 object-cover"
               />
               <div className="p-6 bg-gray-100">
                 <h3 className="text-2xl font-semibold text-orange-500">

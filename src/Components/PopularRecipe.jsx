@@ -4,7 +4,7 @@ import RecipeCard from "./RecipeCard";
 
 const PopularRecipe = () => {
   const popularRecipe = useLoaderData();
-  console.log(popularRecipe);
+  // console.log(popularRecipe);
   return (
     <div>
       <div className="max-w-screen-2xl mx-auto w-11/12">
@@ -17,7 +17,7 @@ const PopularRecipe = () => {
           ))}
         </div>
         <div className="flex mt-10 justify-center items-center">
-          <Link to={"/allRecipe"} className="px-4 py-2 text-lg font-bold bg-orange-500/80 text-white rounded-xl text-center">
+          <Link to={"/allRecipe"} className="px-4 py-2 text-lg font-bold bg-orange-400 text-white rounded-xl text-center">
             All Recipe
           </Link>
         </div>

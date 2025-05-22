@@ -9,11 +9,10 @@ const MyRecipe = () => {
     const {user} = use(AuthContext);
     const [recipes,setRecipe] = useState([]);
     const [loading,setLoading]=useState(true);
-    // const [openModal, setOpenModal] = useState(false);
-    console.log(recipes);
+    // console.log(recipes);
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/recipes?email=${user.email}`)
+        fetch(`https://recipe-book-server-theta.vercel.app/recipes?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
             setLoading(false);
@@ -30,7 +29,7 @@ const MyRecipe = () => {
     }
 
     const handlerDeleteRecipe=(id)=>{
-    fetch(`http://localhost:5000/recipes/${id}`,{
+    fetch(`https://recipe-book-server-theta.vercel.app/recipes/${id}`,{
       method:"DELETE",
     })
     .then(res => res.json())

@@ -17,7 +17,7 @@ const AddRecipe = () => {
       userEmail:user.email,
     };
 
-    fetch("http://localhost:5000/recipes", {
+    fetch("https://recipe-book-server-theta.vercel.app/recipes", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
