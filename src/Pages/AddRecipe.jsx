@@ -15,7 +15,6 @@ const AddRecipe = () => {
       userName:user.displayName,
       userEmail:user.email,
     };
-    console.log(addRecipeData);
 
     fetch("http://localhost:5000/recipes", {
       method: "POST",
