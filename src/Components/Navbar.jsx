@@ -91,7 +91,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        
+
         <figure>
           <img className="w-18 md:w-20" src={logo} alt="Logo" />
         </figure>
@@ -107,6 +107,7 @@ const Navbar = () => {
           {links}
         </ul>
       </div>
+      
       <div className="navbar-end">
         {!user && (
           <div className="md:text-lg font-semibold space-x-1">
