@@ -18,9 +18,7 @@ const RecipeCard = ({ recipe }) => {
         </p>
 
         <div className="flex justify-between items-center text-sm text-gray-600 mt-2">
-          <span>
-            <FaClock size={20} className="inline mr-1" /> {recipe.prepTime} mins
-          </span>
+          <p><span className="font-bold">Cuisine: </span>{recipe.cuisine}</p>
           <span>
             <FaHeart size={20} className="inline mr-1 text-red-500" />{" "}
             {recipe.likes}
@@ -30,7 +28,7 @@ const RecipeCard = ({ recipe }) => {
         <div className="card-actions mt-4">
           <Link
             to={`/recipeDetails/${recipe._id}`}
-            className="btn w-full font-semibold text-white rounded-2xl bg-green-500/80 hover:bg-white hover:border-green-400 hover:text-black"
+            className="btn w-full font-semibold text-white rounded-2xl bg-orange-500/80 hover:bg-white hover:border-orange-400 hover:text-black"
           >
             See Details
           </Link>

@@ -9,6 +9,7 @@ import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import RecipeDetails from "../Pages/RecipeDetails";
+import Spinner from "../Pages/Spinner";
 
 const router = createBrowserRouter([
     {
@@ -18,11 +19,13 @@ const router = createBrowserRouter([
         children:[
             {
                 index:true,
+                hydrateFallbackElement:<Spinner/>,
                 loader:()=> fetch('http://localhost:5000/recipes/populerRecipe/by_like'),
                 Component:Home
             },
             {
                 path:'/allRecipe',
+                hydrateFallbackElement:<Spinner/>,
                 loader:()=> fetch('http://localhost:5000/recipes'),
                 Component:AllRecipe
             },
@@ -48,6 +51,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/recipeDetails/:id',
+                hydrateFallbackElement:<Spinner/>,
                 loader:({params})=>fetch(`http://localhost:5000/recipes/${params.id}`),
                 element:<PrivateRoute>
                     <RecipeDetails/>
