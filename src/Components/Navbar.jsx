@@ -1,34 +1,66 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router";
 import AuthContext from "../Context/AuthContext";
 import toast from "react-hot-toast";
+import { NavLink } from "react-router";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { IoMoonOutline } from "react-icons/io5";
 const Navbar = () => {
   const { user, userSignOut } = use(AuthContext);
+  const [isDark, setIsDark] = useState(false);
 
   const handlerSignOut = () => {
     userSignOut()
-    .then(()=>{
-      toast.success("SignOut Successfully");
-    })
-    .catch((err)=>{
-      toast.error(err.code);
-    })
+      .then(() => {
+        toast.success("SignOut Successfully");
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
+  };
+  const handlerTheme = () => {
+    setIsDark(!isDark);
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    document.documentElement.setAttribute(
+      "data-theme",
+      currentTheme === "light" ? "dark" : "light"
+    );
   };
   const links = (
     <>
-      <Link to={"/"}>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "text-orange-500 font-bold" : ""
+        }
+        to={"/"}
+      >
         <li>Home</li>
-      </Link>
-      <Link to={"/allRecipe"}>
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "text-orange-500 font-bold" : ""
+        }
+        to={"/allRecipe"}
+      >
         <li>All Recipes</li>
-      </Link>
-      <Link to={"/addRecipe"}>
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "text-orange-500 font-bold" : ""
+        }
+        to={"/addRecipe"}
+      >
         <li>Add Recipe</li>
-      </Link>
-      <Link to={"/myRecipe"}>
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "text-orange-500 font-bold" : ""
+        }
+        to={"/myRecipe"}
+      >
         <li>My Recipe</li>
-      </Link>
+      </NavLink>
     </>
   );
   return (
@@ -94,11 +126,11 @@ const Navbar = () => {
               <div tabIndex={0} role="button" className="m-1">
                 <div className="avatar w-10 h-10 avatar-online">
                   <img
-                src={user.photoURL}
-                referrerPolicy="no-referrer"
-                alt="Profile"
-                className="mx-auto ring-2 ring-orange-400 rounded-full object-cover"
-              />
+                    src={user.photoURL}
+                    referrerPolicy="no-referrer"
+                    alt="Profile"
+                    className="mx-auto ring-2 ring-orange-400 rounded-full object-cover"
+                  />
                 </div>
               </div>
               <div
@@ -109,10 +141,10 @@ const Navbar = () => {
 
                 {/* User Info */}
                 <div className="text-center space-y-1">
-              <p className="text-md font-semibold text-gray-800">
-                {user.displayName}
-              </p>
-            </div>
+                  <p className="text-md font-semibold text-gray-800">
+                    {user.displayName}
+                  </p>
+                </div>
 
                 {/* Sign Out Button */}
                 <button
@@ -125,6 +157,13 @@ const Navbar = () => {
             </div>
           </div>
         )}
+        <div onClick={handlerTheme} className="flex border-2 border-gray-400 rounded-full p-1 ml-2 ">
+          {isDark ? (
+            <MdOutlineWbSunny size={28} />
+          ) : (
+            <IoMoonOutline size={28} />
+          )}
+        </div>
       </div>
     </div>
   );

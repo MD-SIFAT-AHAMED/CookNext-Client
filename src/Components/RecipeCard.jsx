@@ -3,7 +3,7 @@ import { FaClock, FaHeart, FaUser } from "react-icons/fa";
 import { Link } from "react-router";
 const RecipeCard = ({ recipe }) => {
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow">
       <figure>
         <img
           src={recipe.image}

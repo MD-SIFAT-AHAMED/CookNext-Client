@@ -12,6 +12,7 @@ const AddRecipe = () => {
     const addRecipeData = {
       ...Object.fromEntries(fromData.entries()),
       categories: fromData.getAll("categories"),
+      likes:0,
       userName:user.displayName,
       userEmail:user.email,
     };
@@ -130,7 +131,7 @@ const AddRecipe = () => {
             </div>
           </div>
 
-          {/* Like Count */}
+          {/* Like Count
           <div>
             <label className="label">Like Count</label>
             <input
@@ -140,7 +141,7 @@ const AddRecipe = () => {
               readOnly
               className="input border-none input-bordered w-full focus:outline-none focus:ring-0 text-center text-sm text-gray-500 bg-gray-100 cursor-not-allowed"
             />
-          </div>
+          </div> */}
 
           {/* Submit Button */}
           <div className="md:col-span-2 text-center">

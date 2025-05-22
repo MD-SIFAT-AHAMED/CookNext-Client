@@ -3,7 +3,7 @@ import { FaClock, FaHeart, FaEdit, FaTrash } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { Link } from "react-router";
 
-const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
+const MyRecipeCard = ({ recipe, recipes, setRecipe, handlerDeleteRecipe }) => {
   const [openModal, setOpenModal] = useState(null);
 
   const handlerUpdateRecipe = (e) => {
@@ -11,27 +11,27 @@ const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
     const from = e.target;
     const fromData = new FormData(from);
     const updateRecipeData = Object.fromEntries(fromData.entries());
-    updateRecipeData.categories= fromData.getAll("categories"),
+    updateRecipeData.categories = fromData.getAll("categories"),
 
-    fetch(`http://localhost:5000/recipes/${openModal._id}`,{
-      method:"PATCH",
-      headers:{
-        'Content-type':'application/json'
-      },
-      body:JSON.stringify(updateRecipeData)
-    })
-    .then(res => res.json())
-    .then(data => {
-      if(data.modifiedCount)
-      {
-        toast.success("Recipe Update Successfully");
+      fetch(`http://localhost:5000/recipes/${openModal._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(updateRecipeData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modifiedCount) {
+            toast.success("Recipe Update Successfully");
 
-        const updateRecipe = {...recipe,...updateRecipeData};
-        const updateRecipes = recipes.map( r => r._id === updateRecipe._id ? updateRecipe : r);
-        setRecipe(updateRecipes);
-        
-      }
-    })
+            const updateRecipe = { ...recipe, ...updateRecipeData };
+            const updateRecipes = recipes.map((r) =>
+              r._id === updateRecipe._id ? updateRecipe : r
+            );
+            setRecipe(updateRecipes);
+          }
+        });
 
     document.getElementById(`modal_${recipe._id}`)?.close();
     setOpenModal(null);
@@ -114,7 +114,7 @@ const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
 
       {/* Modal box */}
       <dialog id={`modal_${recipe._id}`} className="modal">
-        <div className="modal-box mx-auto w-11/12 max-w-5xl">
+        <div className="modal-box place-items-center mx-auto w-11/12 max-w-5xl">
           <div className="modal-action">
             <div>
               <h2 className="text-3xl font-bold mb-6 text-center">
@@ -130,7 +130,7 @@ const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
                   <input
                     type="text"
                     name="image"
-                    className="input border-none w-full focus:outline-none input-bordered "
+                    className="input border w-full focus:outline-none input-bordered "
                     required
                   />
                 </div>
@@ -141,7 +141,7 @@ const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
                   <input
                     type="text"
                     name="title"
-                    className="input border-none focus:outline-none input-bordered w-full"
+                    className="input border focus:outline-none input-bordered w-full"
                     required
                   />
                 </div>
@@ -151,7 +151,7 @@ const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
                   <label className="label">Ingredients</label>
                   <textarea
                     name="ingredients"
-                    className="textarea border-none focus:outline-none  w-full"
+                    className="textarea border focus:outline-none  w-full"
                     required
                   />
                 </div>
@@ -161,7 +161,7 @@ const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
                   <label className="label">Instructions</label>
                   <textarea
                     name="instructions"
-                    className="textarea border-none focus:outline-none w-full"
+                    className="textarea border focus:outline-none w-full"
                     required
                   />
                 </div>
@@ -171,7 +171,7 @@ const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
                   <label className="label">Cuisine Type</label>
                   <select
                     name="cuisine"
-                    className="select border-none select-bordered focus:outline-none w-full"
+                    className="select border select-bordered focus:outline-none w-full"
                     required
                   >
                     <option value="">Select Cuisine</option>
@@ -189,7 +189,7 @@ const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
                   <input
                     type="number"
                     name="prepTime"
-                    className="input border-none focus:outline-none input-bordered w-full"
+                    className="input border focus:outline-none input-bordered w-full"
                     required
                   />
                 </div>
@@ -214,17 +214,17 @@ const MyRecipeCard = ({ recipe,recipes,setRecipe, handlerDeleteRecipe }) => {
                   </div>
                 </div>
 
-                {/* Like Count */}
+                {/* Like Count
                 <div>
                   <label className="label">Like Count</label>
                   <input
                     type="number"
                     name="likes"
-                    value={0}
+                    defaultValuevalue={recipe.likes}
                     readOnly
                     className="input border-none input-bordered w-full focus:outline-none focus:ring-0 text-center text-sm text-gray-500 bg-gray-100 cursor-not-allowed"
                   />
-                </div>
+                </div> */}
 
                 {/* Submit Button */}
                 <div className="md:col-span-2 space-x-3 text-center">
