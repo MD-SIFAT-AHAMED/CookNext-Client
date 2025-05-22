@@ -91,10 +91,14 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
+        
         <figure>
           <img className="w-18 md:w-20" src={logo} alt="Logo" />
         </figure>
-        <Link to={"/"} className="text-xl hidden md:block md:text-2xl font-semibold">
+        <Link
+          to={"/"}
+          className="text-xl hidden md:block md:text-2xl font-semibold"
+        >
           Cook<span className="text-orange-500">Nest</span>
         </Link>
       </div>
@@ -157,7 +161,10 @@ const Navbar = () => {
             </div>
           </div>
         )}
-        <div onClick={handlerTheme} className="flex border-2 border-gray-400 rounded-full p-1 ml-2 ">
+        <div
+          onClick={handlerTheme}
+          className="flex border-2 border-gray-400 rounded-full p-1 ml-2 "
+        >
           {isDark ? (
             <MdOutlineWbSunny size={28} />
           ) : (
