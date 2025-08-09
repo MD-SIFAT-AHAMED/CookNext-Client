@@ -31,12 +31,11 @@ Follow these steps to set up **CookNext** on your local machine:
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/MD-SIFAT-AHAMED/CookNext-Client.git
-   cd cooknext
+   cd CookNext-Client
 
 
  2. **Install Dependencies**
     ```bash
-    cd CookNext-Client
     npm install
     
 4. **Run**
