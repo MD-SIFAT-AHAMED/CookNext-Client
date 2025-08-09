@@ -2,8 +2,7 @@
 
 **CookNext** is a user-friendly recipe-sharing web application where users can explore, discover, and learn about a variety of delicious recipes from around the world. Designed with simplicity and speed in mind, CookNext offers an engaging culinary experience for food lovers.
 
-🌍 Live Demo:
-🔗 Live Link: https://cooknest-af909.web.app/
+🌍 Live Demo:  https://cooknest-af909.web.app/
 
 ## 🌟 Features
 
