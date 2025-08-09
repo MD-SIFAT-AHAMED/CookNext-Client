@@ -41,7 +41,7 @@ Follow these steps to set up **CookNext** on your local machine:
     npm install
     
 4. **Run**
-```bash
-  npm run dev
+   ```bash
+     npm run dev
 
 
