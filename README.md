@@ -36,7 +36,7 @@ Follow these steps to set up **CookNext** on your local machine:
 
  2. **Install Dependencies**
     ```bash
-    cd frontend
+    cd CookNext-Client
     npm install
     
 4. **Run**
