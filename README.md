@@ -35,11 +35,13 @@ Follow these steps to set up **CookNext** on your local machine:
    cd cooknext
 
 
- 2. **Install Dependencies
+ 2. **Install Dependencies**
+    ```bash
     cd frontend
     npm install
     
-4. **Run
+4. **Run**
+```bash
   npm run dev
 
 
