@@ -30,7 +30,7 @@ Follow these steps to set up **CookNext** on your local machine:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/cooknext.git
+   git clone https://github.com/MD-SIFAT-AHAMED/CookNext-Client.git
    cd cooknext
 
 
